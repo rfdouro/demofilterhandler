@@ -5,7 +5,7 @@ Exemplo de uso de Filter (jakarta.servlet) e HandlerInterceptor com `SpringBoot`
 
 |projeto|plataforma|descrição|obs.|
 |----|----|----|----|
-|dmofilters|Projeto demo para uso de webfilter|
+|demofilters|Projeto demo para uso de webfilter|
 |demointerceptor|Projeto demo com uso de interceptadores de navegação|
 
 ## Fontes de pesquisa e consulta
