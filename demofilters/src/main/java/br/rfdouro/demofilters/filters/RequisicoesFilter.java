@@ -23,7 +23,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * aplica o filtro a todas as URLs da aplicação
  */
-@WebFilter(urlPatterns = { "/protegido/*" })
+@WebFilter(urlPatterns = { "/protegido" })
 public class RequisicoesFilter implements Filter {
 
   @Autowired

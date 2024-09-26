@@ -1,4 +1,4 @@
-package br.rfdouro.demofilters.controllers;
+package br.rfdouro.demointerceptor.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.rfdouro.demointerceptor.annotations.VerificaAcesso;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -28,6 +29,7 @@ public class MainController {
  public String login(@RequestParam String usuario) {
   if (usuario != null) {
    session.setAttribute("usuario", usuario);
+   session.setAttribute("autorizacao", "admin");
    return "redirect:/index";
   }
   return "login";
@@ -39,7 +41,8 @@ public class MainController {
   return "index";
  }
 
- @GetMapping("/protegido")
+ @GetMapping({ "/protegido" })
+ @VerificaAcesso(permissao = { "admin" })
  public String protegido() {
   return "protegido";
  }

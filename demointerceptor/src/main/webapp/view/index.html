@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <meta charset='utf-8'>
+ <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+ <title>Início</title>
+ <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+ <h1>Início</h1>
+ <span th:if="${session.usuario!=null}">
+  <a href="logout">Sair</a>
+ </span>
+ <span th:if="${session.usuario==null}">
+  <a href="login">Login</a>
+ </span>
+ | <a href="protegido">Recurso Protegido</a>
+
+ <p th:if="${session.usuario!=null}" th:text="'Olá ' + ${session.usuario}"></p>
+</body>
+
+</html>
