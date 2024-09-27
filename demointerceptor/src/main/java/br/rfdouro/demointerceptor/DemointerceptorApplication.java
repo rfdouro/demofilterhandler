@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import br.rfdouro.demointerceptor.handlers.RequestInterceptor;
 
 @SpringBootApplication
-@EnableWebMvc // to be used only if you're using an non-spring boot application
+//@EnableWebMvc // para ser usado somente se você estiver usando um aplicativo de inicialização que não seja Spring Boot
 public class DemointerceptorApplication implements WebMvcConfigurer {
 
 	public static Logger logger = LoggerFactory.getLogger(DemointerceptorApplication.class);
@@ -22,7 +22,8 @@ public class DemointerceptorApplication implements WebMvcConfigurer {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new RequestInterceptor());
+		registry.addInterceptor(new RequestInterceptor())
+				.addPathPatterns("/protegido*");
 	}
 
 }

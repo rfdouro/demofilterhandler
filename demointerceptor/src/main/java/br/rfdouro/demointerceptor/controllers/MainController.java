@@ -38,6 +38,7 @@ public class MainController {
  @GetMapping("/logout")
  public String deslogar() {
   session.removeAttribute("usuario");
+  session.removeAttribute("autorizacao");
   return "index";
  }
 

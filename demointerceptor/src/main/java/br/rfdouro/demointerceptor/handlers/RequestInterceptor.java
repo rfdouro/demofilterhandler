@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class RequestInterceptor implements HandlerInterceptor {
  @Override
  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-  DemointerceptorApplication.logger.debug("lógica de pré processamento");
+  DemointerceptorApplication.logger.info("lógica de pré processamento");
   HandlerMethod hm = (HandlerMethod) handler;
   Method method = hm.getMethod();
   boolean verificado = true;
@@ -33,18 +33,21 @@ public class RequestInterceptor implements HandlerInterceptor {
     }
    }
   }
-  return verificado;
+  if (!verificado) {
+   request.getRequestDispatcher("/login").forward(request, response);
+  }
+  return true;
  }
 
  @Override
  public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
    ModelAndView modelAndView) throws Exception {
-  DemointerceptorApplication.logger.debug("lógica de pós processamento");
+  DemointerceptorApplication.logger.info("lógica de pós processamento");
  }
 
  @Override
  public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
    throws Exception {
-  DemointerceptorApplication.logger.debug("após processar a lógica");
+  DemointerceptorApplication.logger.info("após processar a lógica");
  }
 }
